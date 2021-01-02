@@ -1,0 +1,1 @@
+puan1 = int(input("1. puanı gir:"))
