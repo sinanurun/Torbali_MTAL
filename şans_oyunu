@@ -1,0 +1,43 @@
+from random import random
+ilk_sans = int(input("para atınız 1 - 5 - 10 ? "))
+if ilk_sans == 1:
+    sans = 1
+elif ilk_sans == 5:
+    sans = 8
+else:
+    sans = 20
+oyun_sayisi = 0
+ikili = 0
+while 0 < sans:
+    for k in range(sans):
+        a = int(random()*11)
+        b = int(random()*11)
+        c = int(random()*11)
+        oyun_sayisi += 1
+        print(k+1,". denemede gelen sayılar :",a,b,c)
+        if a == b == c and a == 7:
+            print("Tebrikler Kazandınız", 200)
+            sans = 0
+            break
+        elif a == b == c :
+            print("Tebrikler Kazandınız", 100)
+            sans = 0
+            break
+        else:
+            if a == b or a == c or b == c:
+                ikili += 1
+    # if ilk_sans == 5 and ikili >=4:
+    #     print("amorti kazandınız")
+    #     ikili = ikili // 2
+    # elif ilk_sans == 10 and ikili >=10:
+    if ikili >= 1:
+        print("amorti kazandınız")
+        print("Bu turdaki tutturulan ikili sayısı : ", ikili)
+        ikili = int(ikili / 2) + 1
+    if sans != 0:
+        print("Amortiden kazandığınız deneme sayısı : ", ikili)
+        sans = ikili
+        ikili = 0
+if ikili == 0 and sans == 0:
+    print("Kaybettiniz :(")
+print("Toplam Oyun Sayısı", oyun_sayisi)
